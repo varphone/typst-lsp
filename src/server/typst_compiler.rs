@@ -11,6 +11,11 @@ use super::TypstServer;
 
 impl TypstServer {
     pub fn compile_source(&self, world: &WorkspaceWorld) -> (Option<Document>, LspDiagnostics) {
+        if let Ok(config) = self.config.try_read() {
+            if config.no_cache_compile {
+                world.get_workspace().resources.write().clear();
+            }
+        }
         let result = typst::compile(world);
 
         let (document, errors) = match result {

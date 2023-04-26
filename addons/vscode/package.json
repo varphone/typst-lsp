@@ -36,6 +36,12 @@
                         "Export PDFs as you type in a file."
                     ]
                 },
+                "typst-lsp.noCacheCompile": {
+                    "title": "No Cache Compile",
+                    "description": "Clear all cached resources before compile to PDF.",
+                    "type": "boolean",
+                    "default": false
+                },
                 "typst-lsp.serverPath": {
                     "title": "Path to server executable",
                     "description": "The extension can use a local typst-lsp executable instead of the one bundled with the extension. This setting controls the path to the executable.",

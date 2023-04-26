@@ -283,6 +283,13 @@ impl LanguageServer for TypstServer {
                 })
                 .unwrap_or_default();
             config.export_pdf = export_pdf;
+            config.no_cache_compile = settings
+                .get("noCacheCompile")
+                .map(|val| match val {
+                    JsonValue::Bool(v) => *v,
+                    _ => false,
+                })
+                .unwrap_or_default();
             self.client
                 .log_message(MessageType::INFO, "New settings applied")
                 .await;
